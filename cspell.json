@@ -1,0 +1,11 @@
+{
+  "ignorePaths": [".git", ".github", "coverage", "dist", "node_modules"],
+  "language": "en-gb",
+  "languageSettings": [
+    {
+      "languageId": "bash, javascript, typescript"
+    }
+  ],
+  "version": "0.2",
+  "words": ["datr", "granul", "granul8", "mrg", "tsconfg", "tspaths"]
+}

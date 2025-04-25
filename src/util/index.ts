@@ -1,0 +1,1 @@
+export { isPossibleDependency } from "./isPossibleDependency";
