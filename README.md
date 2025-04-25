@@ -1,13 +1,13 @@
 ## README: @datr.tech/marble-readme-generator
 
-> Marble README generator - 0.3.0
+> Marble README generator - 0.4.0
 ---
 
 ### Install locally
 
 Install the package from GitHub using the following commands.
 
-``bash
+```bash
 git clone https://github.com/datr.tech/marble-readme-generator.git
 ```
 
@@ -21,7 +21,7 @@ npm i
 
 Format code, config files and (when applicable) tests
 
-``bash
+```bash
 npm run format
 ```
 
@@ -31,7 +31,7 @@ The formatting will be performed by Prettier, and the associated Prettier config
 
 Lint code, config files and (when applicable) tests
 
-``bash
+```bash
 npm run lint
 ```
 
