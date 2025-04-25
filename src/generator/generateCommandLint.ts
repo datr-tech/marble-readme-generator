@@ -1,13 +1,14 @@
 import { fsTemplate } from '@datr.tech/marble-generator-file-system-components';
 
 export const generateCommandLint = (pkgData) => {
-  let commandLintText = "";
+  let commandLintText = '';
 
-	if (typeof pkgData.scripts !== "undefined"
-			&& typeof pkgData.scripts.lint !== "undefined") {
+  if (
+    typeof pkgData.scripts !== 'undefined' &&
+    typeof pkgData.scripts.lint !== 'undefined'
+  ) {
+    commandLintText = fsTemplate.getContents('readmeCommandLintTemplate', pkgData);
+  }
 
-		commandLintText = fsTemplate.getContents('readmeCommandLintTemplate', pkgData);
-	}
-
-	return commandLintText;
-}
+  return commandLintText;
+};

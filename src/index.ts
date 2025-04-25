@@ -1,55 +1,55 @@
-import fs from "node:fs";
+import { pkgNames } from '@app-mrg/config';
 import { generator } from '@app-mrg/generator';
 import { paths } from '@app-mrg/paths';
-import { pkgNames } from '@app-mrg/config';
 import { isPossibleDependency } from '@app-mrg/util';
+import fs from 'node:fs';
 
 pkgNames.forEach((pkgName) => {
   const pkgData = generator.generatePkgData(pkgName);
-	const { name } = pkgData;
-	
-	let commandFormatText = "";
-	let commandLintText = "";
-	let headerText = "";
-	let installAsDependencyText = "";
-	let installLocallyText = "";
-	let readmeText = "";
+  const { name } = pkgData;
 
-	headerText = generator.generateHeader(pkgData);
-	
-	if (isPossibleDependency(name)) {
-		installAsDependencyText = generator.generateInstallAsDependency(pkgData);
-	}
+  let commandFormatText = '';
+  let commandLintText = '';
+  let headerText = '';
+  let installAsDependencyText = '';
+  let installLocallyText = '';
+  let readmeText = '';
 
-	installLocallyText = generator.generateInstallLocally(pkgData);
-	commandFormatText = generator.generateCommandFormat(pkgData);
-	commandLintText = generator.generateCommandLint(pkgData);
-  
-	if (headerText !== "") {
-		readmeText = headerText;
-	}
+  headerText = generator.generateHeader(pkgData);
 
-	if (readmeText !== "") {
-		if (installAsDependencyText !== "") {
-			readmeText += installAsDependencyText;
-		}
-		
-		if (installLocallyText !== "") {
-			readmeText += installLocallyText;
-		}
-		
-		if (commandFormatText !== "") {
-			readmeText += commandFormatText;
-		}
-		
-		if (commandLintText !== "") {
-			readmeText += commandLintText;
-		}
-	}
+  if (isPossibleDependency(name)) {
+    installAsDependencyText = generator.generateInstallAsDependency(pkgData);
+  }
 
-	if (readmeText !== "") {
-		const readmePath = paths.deriveReadmePath(pkgName);
+  installLocallyText = generator.generateInstallLocally(pkgData);
+  commandFormatText = generator.generateCommandFormat(pkgData);
+  commandLintText = generator.generateCommandLint(pkgData);
 
-		fs.writeFileSync(readmePath, readmeText, "utf8");
-	}
+  if (headerText !== '') {
+    readmeText = headerText;
+  }
+
+  if (readmeText !== '') {
+    if (installAsDependencyText !== '') {
+      readmeText += installAsDependencyText;
+    }
+
+    if (installLocallyText !== '') {
+      readmeText += installLocallyText;
+    }
+
+    if (commandFormatText !== '') {
+      readmeText += commandFormatText;
+    }
+
+    if (commandLintText !== '') {
+      readmeText += commandLintText;
+    }
+  }
+
+  if (readmeText !== '') {
+    const readmePath = paths.deriveReadmePath(pkgName);
+
+    fs.writeFileSync(readmePath, readmeText, 'utf8');
+  }
 });

@@ -1,1 +1,1 @@
-export { isPossibleDependency } from "./isPossibleDependency";
+export { isPossibleDependency } from './isPossibleDependency';
